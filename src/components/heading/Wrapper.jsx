@@ -9,8 +9,7 @@ export const Container = ({ children }) => {
 };
 
 export const Grid = ({ children, gap }) => {
-  const gapClass = `gap-${gap}`;
   return (
-    <div className={`flex h-full items-center ${gapClass}`}>{children}</div>
+    <div className={`flex h-full items-center gap-${gap}`}>{children}</div>
   );
 };

@@ -2,17 +2,15 @@ import React from "react";
 import Email from "./Email";
 import Whatsapp from "./Whatsapp";
 import { Container, Grid } from "./Wrapper";
-import Language from "./Language";
 
 const Heading = () => {
   return (
     <Container>
-      <Grid gap="8">
+      <Grid gap={2}>
         <Email />
         <Whatsapp />
       </Grid>
-      <Grid gap="4">
-        <Language />
+      <Grid gap={2}>
         <div>USD</div>
         <div>Login</div>
         <div>WishList</div>

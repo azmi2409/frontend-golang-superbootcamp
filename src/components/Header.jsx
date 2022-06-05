@@ -46,30 +46,33 @@ const Header = () => {
   const [Y, setY] = React.useState(0);
   const headerRef = React.useRef(null);
 
-  const handleScroll = () => {
+  const handleScroll = React.useCallback(() => {
+    const header = headerRef.current;
+    if (Y > 50) {
+      header.classList.add("sticky");
+      if (Y > window.scrollY) {
+        header.classList.remove("opacity-0");
+      } else if (Y < window.scrollY) {
+        header.classList.add("opacity-0");
+      }
+    } else {
+      header.classList.remove("sticky");
+    }
     setY(window.scrollY);
-  };
+  }, [Y]);
 
   React.useEffect(() => {
+    setY(window.scrollY);
     document.addEventListener("scroll", handleScroll);
     return () => {
       document.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  React.useEffect(() => {
-    const header = headerRef.current;
-    if (Y > 50) {
-      header.classList.add("sticky");
-    } else {
-      header.classList.remove("sticky");
-    }
-  }, [Y]);
+  }, [handleScroll]);
 
   return (
     <header
       ref={headerRef}
-      className="grid lg:px-10 px-5 w-full py-6 grid-cols-3 top-0 backdrop-blur-sm z-50 bg-white bg-opacity-80"
+      className="grid lg:px-10 px-5 w-full py-6 grid-cols-3 top-0 backdrop-blur-sm z-50 bg-white bg-opacity-80 transition-all duration-200"
     >
       <section className="col-span-1 h-full hidden md:block">
         <ul className="flex gap-2 text-sm h-full items-center md:gap-8 md:text-md">

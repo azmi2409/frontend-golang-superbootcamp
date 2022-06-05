@@ -1,37 +1,41 @@
 import React from "react";
+import { FaShippingFast } from "react-icons/fa";
+import { GrSecure } from "react-icons/gr";
+import { ImPriceTag } from "react-icons/im";
+import { GiLindenLeaf } from "react-icons/gi";
 
 const feature = [
   {
     id: 1,
     title: "Free Shipping",
     description: "All orders in Jabodetabek",
-    icon: "fas fa-truck",
+    icon: (cn) => <FaShippingFast className={cn} />,
   },
   {
     id: 2,
     title: "100% Organic",
     description: "Guarantee organic",
-    icon: "fas fa-leaf",
+    icon: (cn) => <GiLindenLeaf className={cn} />,
   },
   {
     id: 3,
     title: "100% Secure",
     description: "Payment Security",
-    icon: "fas fa-lock",
+    icon: (cn) => <GrSecure className={cn} />,
   },
   {
     id: 4,
     title: "Best Price",
     description: "Best Price Guarantee",
-    icon: "fas fa-dollar-sign",
+    icon: (cn) => <ImPriceTag className={cn} />,
   },
 ];
 
 const Card = ({ title, description, icon }) => {
   return (
-    <div className="w-full h-16 flex gap-2 py-2 px-5 justify-center items-center">
-      <i className={icon}></i>
-      <div className="text-justify w-full">
+    <div className="w-full h-16 flex gap-5 py-2 px-5 justify-center items-center">
+      {icon("w-8 h-8")}
+      <div className="w-full">
         <h3 className="text-lg font-bold">{title}</h3>
         <p className="text-sm">{description}</p>
       </div>

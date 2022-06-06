@@ -28,7 +28,7 @@ const categories = [
   },
 ];
 
-const CategoryCard = ({ col = 2, name = "tea", pict = "" }) => {
+const CategoryCard = ({ col = 2, name = "tea", pict }) => {
   return (
     <div
       className={`h-96 flex col-span-${col} w-full bg-gray-200 justify-center pt-10 relative box-border capitalize`}

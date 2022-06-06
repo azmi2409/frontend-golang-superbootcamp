@@ -1,19 +1,23 @@
 import React from "react";
 import { useProducts } from "../../hooks";
-import { ProductCard, SkeletonCard } from "./ProductCard";
+import ProductCard, { SkeletonCard } from "./ProductCard";
 import { formatCurrencyToIDR, getURL } from "../../utils/helper";
-
-const categories = ["all", "tea", "honey", "cake"];
 
 const ProductGrid = () => {
   const { products, loading, filterProducts } = useProducts();
+
+  const categories = React.useMemo(() => {
+    const categoryList = products.map((product) => product.category);
+    const uniqueCategory = ["all", ...new Set(categoryList)];
+    return uniqueCategory;
+  }, [loading]);
 
   return (
     <>
       <div className="flex justify-between px-10">
         <h3 className="font-bold text-2xl">New Arrival</h3>
         <div className="flex gap-5">
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <div
               onClick={() => filterProducts(category)}
               key={category}
@@ -30,11 +34,11 @@ const ProductGrid = () => {
         ) : (
           products?.map((v) => (
             <ProductCard
-              key={v.ID}
+              key={v.sku}
               description={v.description}
               name={v.name}
               price={formatCurrencyToIDR(v.price)}
-              pict={getURL(v.ProductImages[0].image_url)}
+              pict={getURL(v.image_url[0])}
             />
           ))
         )}

@@ -2,7 +2,7 @@ import React from "react";
 
 export const Container = ({ children }) => {
   return (
-    <header className="w-full h-11 text-white bg-black grid grid-cols-2 place-items-center">
+    <header className="w-full h-11 text-white bg-black flex mx-auto justify-between px-10">
       {children}
     </header>
   );

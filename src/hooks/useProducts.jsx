@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { getProducts } from "../utils/server";
 
 const useProducts = () => {
   const [products, setProducts] = React.useState({
@@ -7,12 +7,6 @@ const useProducts = () => {
     origin: [],
   });
   const [loading, setLoading] = React.useState(true);
-
-  const getProducts = async () => {
-    const url = "http://backend-final-beeleaf.herokuapp.com/api/v1/product/";
-    const response = await axios.get(url);
-    return response.data;
-  };
 
   const productList = React.useCallback(async () => {
     const data = await getProducts();
@@ -32,7 +26,7 @@ const useProducts = () => {
         }));
       } else {
         const filtered = products.origin.filter(
-          (product) => product.Category.name === category
+          (product) => product.category === category
         );
         setProducts((state) => ({
           ...state,

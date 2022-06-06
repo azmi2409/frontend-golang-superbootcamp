@@ -4,6 +4,7 @@ import {
   AiFillTwitterSquare,
   AiFillYoutube,
 } from "react-icons/ai";
+
 export const socialMedia = [
   {
     name: "facebook",

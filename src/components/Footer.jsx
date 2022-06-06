@@ -1,38 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { socialMedia } from "../utils/socialMedia";
-const menus = [
-  {
-    id: 1,
-    title: "Home",
-    path: "/",
-  },
-  {
-    id: 2,
-    title: "Shop",
-    path: "/shop",
-  },
-  {
-    id: 3,
-    title: "Collection",
-    path: "/collection",
-  },
-  {
-    id: 4,
-    title: "About",
-    path: "/about",
-  },
-  {
-    id: 5,
-    title: "Blog",
-    path: "/blog",
-  },
-  {
-    id: 6,
-    title: "Contact",
-    path: "/contact",
-  },
-];
+import { menus } from "../utils/menus";
 
 const Footer = () => {
   return (
@@ -73,7 +42,7 @@ const Footer = () => {
             </Link>
           ))}
         </div>
-        <div>Copyright © 2020 Beeleaf. All rights reserved.</div>
+        <div>Copyright © 2022 Beeleaf. All rights reserved.</div>
       </div>
     </footer>
   );

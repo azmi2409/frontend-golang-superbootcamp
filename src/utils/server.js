@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://backend-final-beeleaf.herokuapp.com/api/v1";
+const URL = "https://backend-final-beeleaf.herokuapp.com/api/v1";
 
 //**Products */
 export const getProducts = async () => {

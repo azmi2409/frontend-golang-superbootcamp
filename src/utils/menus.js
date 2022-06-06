@@ -1,3 +1,5 @@
+import { RiAccountCircleLine } from "react-icons/ri";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 export const menus = [
   {
     id: 1,

@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { RiAccountCircleLine } from "react-icons/ri";
 import { useCategories } from "../hooks";
 import { rightMenus } from "../utils/menus";
 

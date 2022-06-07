@@ -9,8 +9,8 @@ export const getProducts = async () => {
   return response.data;
 };
 
-export const getProduct = async (id) => {
-  const url = `${URL}/product/${id}`;
+export const getProduct = async (slug) => {
+  const url = `${URL}/product/${slug}`;
   const response = await axios.get(url);
   return response.data;
 };

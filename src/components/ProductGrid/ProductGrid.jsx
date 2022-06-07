@@ -39,6 +39,7 @@ const ProductGrid = () => {
               name={v.name}
               price={formatCurrencyToIDR(v.price)}
               pict={getURL(v.image_url[0])}
+              slug={v.slug}
             />
           ))
         )}

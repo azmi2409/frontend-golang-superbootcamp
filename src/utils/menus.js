@@ -32,7 +32,7 @@ export const rightMenus = [
   {
     id: 1,
     name: "Account",
-    path: "/account",
+    path: "/login",
     logo: RiAccountCircleLine,
   },
   {

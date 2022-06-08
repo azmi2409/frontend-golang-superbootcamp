@@ -1,7 +1,8 @@
 import React from "react";
 
 const CombineContext = ({ ...components }) => {
-  return components.reduce(
+  const comp = [...Object.values(components)];
+  return comp?.reduce(
     (Acc, CurrentComponent) => {
       return ({ children }) => (
         <Acc>

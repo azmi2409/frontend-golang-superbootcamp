@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Top from "./components/Top";
 import ProductPage from "./views/ProductPage";
 import CategoryPage from "./views/CategoryPage";
+import Login from "./views/Login";
+import Logout from "./views/Logout";
 
 const App = () => {
   return (
@@ -17,6 +19,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/product/:slug" element={<ProductPage />} />
         <Route path="/category/:slug" element={<CategoryPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="*" element={<Home />} />
       </Routes>
       <Top />
       <Footer />

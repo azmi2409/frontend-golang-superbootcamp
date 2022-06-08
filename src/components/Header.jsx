@@ -65,7 +65,9 @@ const Header = () => {
             >
               <div className="cursor-pointer ">
                 {menu.logo && (
-                  <menu.logo className="w-6 h-6 hover:scale-105 hover:text-blue-500 transition-all duration-200" />
+                  <Link to={menu.path}>
+                    <menu.logo className="w-6 h-6 hover:scale-105 hover:text-blue-500 transition-all duration-200" />
+                  </Link>
                 )}
               </div>
             </li>

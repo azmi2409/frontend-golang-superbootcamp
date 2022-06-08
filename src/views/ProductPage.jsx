@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useProduct } from "../hooks";
 import Container from "../components/Container";
 import { getURL, formatCurrencyToIDR } from "../utils/helper";
@@ -8,15 +8,35 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 const ProductPage = () => {
   const { slug } = useParams();
   const [product, loading] = useProduct(slug);
+  const [quantity, setQuantity] = React.useState(0);
+
+  const handleQuantityChange = (e) => {
+    const { value } = e.target;
+    if (value >= 0) {
+      setQuantity(value);
+    }
+  };
+
+  const addQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const removeQuantity = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
 
   React.useEffect(() => {
     const title = product ? product.name : "";
-    document.title = `${title} - Beeleaf.id`;
+    if (title) {
+      document.title = `${title} - Beeleaf.id`;
+    }
   }, [product]);
 
   return (
     <Container>
-      <div className="grid grid-cols-2 place-items-center">
+      <main className="grid grid-cols-2 place-items-center">
         <div className="col-span-1">
           <div className="relative">
             <img
@@ -40,7 +60,10 @@ const ProductPage = () => {
             </p>
           </div>
           <div className="h-11 w-40 border-2 grid grid-cols-3 place-items-center box-border text-gray-800">
-            <button className="col-span-1 w-full flex justify-center items-center">
+            <button
+              onClick={() => removeQuantity()}
+              className="col-span-1 w-full flex justify-center items-center"
+            >
               <AiOutlineMinus className="text-xl" />
             </button>
             <input
@@ -48,13 +71,29 @@ const ProductPage = () => {
               type="number"
               min={0}
               defaultValue={0}
+              value={quantity}
+              onChange={handleQuantityChange}
             />
-            <button className="col-span-1 w-full flex justify-center items-center">
+            <button
+              onClick={() => addQuantity()}
+              className="col-span-1 w-full flex justify-center items-center"
+            >
               <AiOutlinePlus className="text-xl" />
             </button>
           </div>
+          <div className="mt-3">
+            <button className="w-60 h-11 bg-gray-800 text-white font-bold py-2 px-4">
+              Add to Cart
+            </button>
+            <h2 className="mt-4 text-gray-800 capitalize">
+              Category :{" "}
+              <Link to={`/category/${product?.category}`} className="font-bold">
+                {product?.category}
+              </Link>
+            </h2>
+          </div>
         </div>
-      </div>
+      </main>
     </Container>
   );
 };

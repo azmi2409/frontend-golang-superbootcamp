@@ -8,7 +8,9 @@ const useCategories = () => {
   const categoryList = React.useCallback(async () => {
     const data = await getCategories();
     setCategories(data);
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }, []);
 
   const category = React.useMemo(() => {

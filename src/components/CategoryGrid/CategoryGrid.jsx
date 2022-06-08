@@ -1,8 +1,7 @@
 import React from "react";
 import CategoryCard from "./CategoryCard";
 import { useCategories } from "../../hooks";
-
-const CategorySkeleton = React.lazy(() => import("./CategorySkeleton"));
+import CategorySkeleton from "./CategorySkeleton";
 
 const CategoryGrid = () => {
   const { categories, loading, categoryList } = useCategories();

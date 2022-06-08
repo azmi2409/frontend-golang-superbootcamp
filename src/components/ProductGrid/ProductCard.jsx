@@ -17,7 +17,7 @@ export const ProductCard = ({ name, price, pict, description, slug }) => {
           <p className="text-white">{description}</p>
           <button
             onClick={(e) => e.stopPropagation()}
-            className="py-2 px-5 rounded-lg bg-blue-500 text-white flex items-center gap-1 text-sm"
+            className="py-2 px-5 bg-gray-800 hover:bg-blue-500 text-white flex items-center gap-1 text-sm transition-colors duration-200"
           >
             <MdAddShoppingCart />
             <span>Add To Cart</span>

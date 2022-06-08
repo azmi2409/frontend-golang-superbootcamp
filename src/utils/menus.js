@@ -8,13 +8,8 @@ export const menus = [
   },
   {
     id: 2,
-    title: "Shop",
-    path: "/shop",
-  },
-  {
-    id: 3,
-    title: "Collection",
-    path: "/collection",
+    title: "Category",
+    path: "/category",
   },
   {
     id: 4,

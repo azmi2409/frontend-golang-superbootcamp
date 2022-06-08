@@ -1,37 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
-import { useCategories } from "../hooks";
-import { rightMenus } from "../utils/menus";
-
-// const categories = [
-//   {
-//     id: 1,
-//     name: "All",
-//     path: "/",
-//   },
-//   {
-//     id: 2,
-//     name: "Tea",
-//     path: "/tea",
-//   },
-//   {
-//     id: 3,
-//     name: "Coffee",
-//     path: "/coffee",
-//   },
-//   {
-//     id: 4,
-//     name: "Honey",
-//     path: "/honey",
-//   },
-// ];
+import { rightMenus, menus } from "../utils/menus";
 
 const Header = () => {
   const [Y, setY] = React.useState(0);
   const headerRef = React.useRef(null);
-
-  const { categories, loading } = useCategories();
 
   const handleScroll = React.useCallback(() => {
     const header = headerRef.current;
@@ -62,13 +36,13 @@ const Header = () => {
       className="grid lg:px-10 px-5 w-full py-6 grid-cols-3 top-0 backdrop-blur-sm z-50 bg-white bg-opacity-80 transition-all duration-200"
     >
       <section className="col-span-1 h-full hidden md:block">
-        <ul className="flex gap-2 h-full items-center md:gap-8 font-bold flex-row-reverse justify-end">
-          {categories.map((category) => (
+        <ul className="flex h-full items-center md:gap-8 font-bold">
+          {menus.map((category) => (
             <li
               className="hover:text-blue-500 transition-all duration-200 capitalize"
-              key={category.name}
+              key={category.id}
             >
-              <Link to={`category/${category.name}`}>{category.name}</Link>
+              <Link to={category.path}>{category.title}</Link>
             </li>
           ))}
         </ul>

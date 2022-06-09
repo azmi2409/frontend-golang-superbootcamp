@@ -1,8 +1,10 @@
 import { MdAddShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import React from "react";
+import useCart from "../../hooks/useCart";
 
-export const ProductCard = ({ name, price, pict, description, slug }) => {
+export const ProductCard = ({ name, price, pict, description, slug, sku }) => {
+  const { addToCart } = useCart();
   return (
     <div className="p-5">
       <div
@@ -16,7 +18,7 @@ export const ProductCard = ({ name, price, pict, description, slug }) => {
         >
           <p className="text-white">{description}</p>
           <button
-            onClick={(e) => e.stopPropagation()}
+            onClick={() => addToCart({ sku, quantity: 1 })}
             className="py-2 px-5 bg-gray-800 hover:bg-blue-500 text-white flex items-center gap-1 text-sm transition-colors duration-200"
           >
             <MdAddShoppingCart />

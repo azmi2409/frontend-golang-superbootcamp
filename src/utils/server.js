@@ -42,8 +42,32 @@ export const getUser = async (id) => {
 };
 
 //** Cart */
-export const addToCart = async (userId, productId) => {
-  const url = `${URL}/cart/${userId}/add/${productId}`;
-  const response = await axios.post(url);
+export const addCart = async (data, token) => {
+  const url = `${URL}/cart/`;
+  const response = await axios.post(url, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
+
+export const getCart = async (token) => {
+  const url = `${URL}/cart/`;
+  const response = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
+
+export const deleteCartItem = async (id, token) => {
+  const url = `${URL}/cart/${id}`;
+  const response = await axios.delete(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 };

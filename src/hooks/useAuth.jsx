@@ -22,7 +22,11 @@ const useAuth = () => {
     return !!auth.token;
   }, [auth.token]);
 
-  return { isLoggedIn, handleLogin, handleLogout };
+  const getToken = React.useMemo(() => {
+    return auth.token;
+  }, [auth.token]);
+
+  return { isLoggedIn, handleLogin, handleLogout, getToken };
 };
 
 export default useAuth;

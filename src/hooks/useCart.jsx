@@ -36,7 +36,7 @@ const useCart = () => {
 
   const deleteFromCart = async (id) => {
     const token = getToken;
-    const res = await deleteCart(id, token);
+    const res = await deleteCartItem(id, token);
     console.log(res);
   };
 

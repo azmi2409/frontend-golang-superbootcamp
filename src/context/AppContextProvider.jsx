@@ -1,4 +1,6 @@
 import CombineContext from "../utils/CombineContext";
 import { AuthProvider } from "./AuthContext";
 
-export const AppContextProvider = CombineContext([AuthProvider]);
+const providers = [AuthProvider];
+
+export const AppContextProvider = CombineContext(...providers);

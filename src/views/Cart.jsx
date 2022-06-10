@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 import { formatCurrencyToIDR, getURL } from "../utils/helper";
 
 const Cart = () => {
-  const { addToCart, cart, isEmpty, loading } = useCart();
+  const { cart, isEmpty, loading, countTotalPrice, deleteFromCart } = useCart();
   const { isLoggedIn } = useAuth();
 
   if (!isLoggedIn) {
@@ -62,7 +62,7 @@ const Cart = () => {
                   <td className="px-4 py-2">
                     <button
                       className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded"
-                      onClick={() => addToCart(item)}
+                      onClick={() => deleteFromCart(item.id)}
                     >
                       Remove
                     </button>
@@ -88,10 +88,7 @@ const Cart = () => {
           </Link>
           <div className="flex flex-col border-2 px-5 py-2">
             <div className="text-lg font-semibold">
-              Total:{" "}
-              {formatCurrencyToIDR(
-                cart?.reduce((acc, cur) => acc + cur.price * cur.quantity, 0)
-              )}
+              Total: {formatCurrencyToIDR(countTotalPrice)}
             </div>
             <div className="text-md mt-5 w-full">
               <Link to={"/checkout"} className="w-full inline-flex">

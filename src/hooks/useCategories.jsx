@@ -1,8 +1,9 @@
 import React from "react";
 import { getCategories } from "../utils/server";
+import { CategoryContext } from "../context/CategoryContext";
 
 const useCategories = () => {
-  const [categories, setCategories] = React.useState(["all"]);
+  const [categories, setCategories] = React.useContext(CategoryContext);
   const [loading, setLoading] = React.useState(true);
 
   const categoryList = React.useCallback(async () => {

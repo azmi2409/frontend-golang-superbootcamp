@@ -1,11 +1,9 @@
 import React from "react";
 import { getProducts } from "../utils/server";
+import { ProductContext } from "../context/ProductContext";
 
 const useProducts = () => {
-  const [products, setProducts] = React.useState({
-    products: [],
-    origin: [],
-  });
+  const [products, setProducts] = React.useContext(ProductContext);
   const [loading, setLoading] = React.useState(true);
 
   const productList = React.useCallback(async () => {

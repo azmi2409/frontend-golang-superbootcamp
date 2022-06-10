@@ -1,5 +1,6 @@
 import { RiAccountCircleLine } from "react-icons/ri";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import CartLogo from "../components/CartLogo";
 export const menus = [
   {
     id: 1,
@@ -39,6 +40,6 @@ export const rightMenus = [
     id: 2,
     name: "Cart",
     path: "/cart",
-    logo: AiOutlineShoppingCart,
+    logo: CartLogo,
   },
 ];

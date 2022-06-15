@@ -5,7 +5,6 @@ import { CartContext } from "../context/CartContext";
 
 const useCart = () => {
   const { cart, setCart } = React.useContext(CartContext);
-  const [total, setTotal] = React.useState(0);
   const [loading, setLoading] = React.useState(true);
   const [isEmpty, setIsEmpty] = React.useState(true);
   const [refetch, setRefetch] = React.useState(false);
@@ -18,7 +17,6 @@ const useCart = () => {
       .then((res) => {
         if (res) {
           setCart(res);
-          setTotal(res?.reduce((acc, cur) => acc + cur.price, 0));
           setIsEmpty(false);
         } else {
           setIsEmpty(true);
@@ -61,7 +59,6 @@ const useCart = () => {
   return {
     addToCart,
     cart,
-    total,
     loading,
     deleteFromCart,
     isEmpty,

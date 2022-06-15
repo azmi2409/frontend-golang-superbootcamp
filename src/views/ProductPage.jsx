@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { useProduct } from "../hooks";
+import { useProduct, useCart } from "../hooks";
 import Container from "../components/Container";
 import { getURL, formatCurrencyToIDR } from "../utils/helper";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
@@ -9,6 +9,7 @@ const ProductPage = () => {
   const { slug } = useParams();
   const [product, loading] = useProduct(slug);
   const [quantity, setQuantity] = React.useState(0);
+  const { addToCart } = useCart();
 
   const handleQuantityChange = (e) => {
     const { value } = e.target;
@@ -25,6 +26,15 @@ const ProductPage = () => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const submitCart = () => {
+    addToCart({
+      sku: product.sku,
+      quantity,
+    }).then(() => {
+      setQuantity(1);
+    });
   };
 
   React.useEffect(() => {
@@ -82,7 +92,10 @@ const ProductPage = () => {
             </button>
           </div>
           <div className="mt-3">
-            <button className="w-60 h-11 bg-gray-800 text-white font-bold py-2 px-4">
+            <button
+              onClick={() => submitCart()}
+              className="w-60 h-11 bg-gray-800 text-white font-bold py-2 px-4"
+            >
               Add to Cart
             </button>
             <h2 className="mt-4 text-gray-800 capitalize">

@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className="grid lg:px-10 px-5 w-full py-6 grid-cols-3 top-0 backdrop-blur-sm z-50 bg-white bg-opacity-80 transition-all duration-200"
+      className="grid lg:px-10 px-5 w-full py-6 grid-cols-3 top-0 backdrop-blur-sm z-50 bg-white bg-opacity-80 transition-all duration-200 relative"
     >
       <section className="col-span-1 h-full hidden md:block">
         <ul className="flex h-full items-center md:gap-8 font-bold">
@@ -65,9 +65,7 @@ const Header = () => {
             >
               <div className="cursor-pointer ">
                 {menu.logo && (
-                  <Link to={menu.path}>
-                    <menu.logo className="w-6 h-6 hover:scale-105 hover:text-blue-500 transition-all duration-200" />
-                  </Link>
+                  <menu.logo className="w-6 hover:scale-105 hover:text-blue-500 transition-all duration-200 h-6" />
                 )}
               </div>
             </li>

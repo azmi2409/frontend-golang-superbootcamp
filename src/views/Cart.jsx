@@ -4,8 +4,10 @@ import { Navigate, Link } from "react-router-dom";
 import { formatCurrencyToIDR, getURL } from "../utils/helper";
 
 const Cart = () => {
-  const { cart, isEmpty, loading, countTotalPrice, deleteFromCart } = useCart();
+  const { cartItem, isEmpty, loading, countTotalPrice, deleteFromCart } =
+    useCart();
   const { isLoggedIn } = useAuth();
+  const cart = cartItem;
 
   if (!isLoggedIn) {
     return <Navigate to="/login" />;

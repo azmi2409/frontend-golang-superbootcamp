@@ -12,6 +12,9 @@ const useCart = () => {
   const { getToken, isLoggedIn } = useAuth();
 
   const cartList = React.useCallback(() => {
+    if (!isLoggedIn) {
+      return [];
+    }
     const token = getToken;
     setLoading(true);
     getCart(token)
@@ -27,7 +30,7 @@ const useCart = () => {
         setLoading(false);
         setRefetch(false);
       });
-  }, [getToken]);
+  }, [getToken, setCart, setIsEmpty, setLoading, setRefetch]);
 
   React.useEffect(() => {
     cartList();

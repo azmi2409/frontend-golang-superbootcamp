@@ -57,7 +57,7 @@ const Header = () => {
         </Link>
       </section>
       <section className="col-span-1 hidden md:block">
-        <ul className="flex gap-2 text-md h-full items-center md:gap-6 md:text-xl justify-end">
+        <ul className="flex gap-2 text-md h-full items-center md:gap-6 md:text-xl justify-end mr-10">
           {rightMenus.map((menu) => (
             <li
               className="hover:text-black hover:font-bold transition-all duration-200"
